@@ -1,5 +1,19 @@
-h1 {
+@font-face {
+font-family: Metalista;
+src: url("fonts/Metalista.otf") format("opentype");
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: url('backgrounds/1.png') center no-repeat;
+	background-size: cover;
+}
+
+p {
+	font-family: 'Metalista';
 	color: red;
+	font-size: 99px;
 }
 
 .numberContainer {
@@ -12,4 +26,5 @@ h1 {
 	width: 40%;
 	margin: 0 auto;
 	margin-top: 500px;
+	transition: bottom 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 }
