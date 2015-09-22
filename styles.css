@@ -2,12 +2,14 @@ h1 {
 	color: red;
 }
 
-div.numberContainer {
+.numberContainer {
 	height: 37px;
 	width: 10%;
 	margin: 0 auto;
 }
 
 .gifContainer {
+	width: 40%;
+	margin: 0 auto;
 	margin-top: 500px;
 }
