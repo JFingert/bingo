@@ -1,14 +1,21 @@
 $(document).ready(function() {
-	$('body').on('click', 'button', function() {
+	$('body').on('click', '.select', function() {
 		$('.gifContainer').css('margin-top', '500px');
 		assembleBingo();
+
+		$('.spiral').addClass('spin');
+		$('.jaw').addClass('chomp');
+		setTimeout(function() {
+			$('.spiral').removeClass('spin');
+			$('.jaw').removeClass('chomp');
+		}, 3950);
 	});
 	
 	function assembleBingo() {
 		chooseLetter(function(letter, min, max) {
 			chooseNumbers(min, max, function(number) {
 				// console.log(letter + number);
-				// startAnimation();
+				startAnimation();
 				// chooseAudio();
 				$('p').html(letter + number);
 			});
@@ -43,8 +50,9 @@ $(document).ready(function() {
     }
 
     function startAnimation() {
-    	$('.gifContainer').html('<img src="./assets/' + Math.floor(Math.random() * (5 - 1 + 1) + 1) + '.gif">')
-    	$('.gifContainer').animate({'margin-top': '50px'}, 1500);
+    	// $('.gifContainer').html('<img src="./assets/' + Math.floor(Math.random() * (5 - 1 + 1) + 1) + '.gif">')
+    	// $('.gifContainer').animate({'margin-top': '50px'}, 1500);
+
     }
 
     function chooseAudio() {
