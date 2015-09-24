@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var audio = new Audio();
 	var audioCounter = 0;
+	var numbersPlayed = [];
 
 	$('body').on('click', '.winner-overlay', function() {
 		$(this).hide();
@@ -10,10 +11,16 @@ $(document).ready(function() {
 	function assembleBingo() {
 		chooseLetter(function(letter, min, max) {
 			chooseNumbers(min, max, function(number) {
-				startAnimation();
-				$('.numberContainer').html('<p></p>');
-				$('p').addClass('fade-in');
-				$('p').html(letter + number);
+				if (numbersPlayed.indexOf(letter + number) > -1) {
+					console.log('exists! ', letter + number);
+					assembleBingo();
+				} else {
+					console.log('does not exist! ', letter + number);
+					startAnimation();
+					$('.numberContainer').html('<p></p>');
+					$('p').addClass('fade-in');
+					$('p').html(letter + number);
+				}
 				// setTimeout(function() {
 				// 	$('p').removeClass('fade-in');
 				// }, 10500);
@@ -51,7 +58,7 @@ $(document).ready(function() {
     function chooseAudio() {
     	// var num = Math.floor(Math.random() * (18 - 1 + 1) + 1);
     	console.log(audioCounter);
-    	if(audioCounter >= 17 || audioCounter < 1) {
+    	if(audioCounter >= 25 || audioCounter < 1) {
     		audioCounter = 1;
     	} else {
     		audioCounter++;
