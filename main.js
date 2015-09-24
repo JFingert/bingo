@@ -20,14 +20,14 @@ $(document).ready(function() {
 
 	$('body').on('click', '.winner', function() {
 		$('.winner-overlay').show();
-		audio.src = 'audio/1.mp3';
+		audio.src = 'audio/bingo-winner.mp3';
     	audio.play();
     	$('p').html('');
 
 		setTimeout(function() {
 			audio.pause();
 			$('.winner-overlay').hide();
-		}, 4000);
+		}, 7000);
 	});
 	
 	function assembleBingo() {
@@ -72,6 +72,7 @@ $(document).ready(function() {
     	var src = 'audio/' + num + '.mp3';
 
     	audio.src = src;
+    	audio.currentTime = 30;
     	audio.play();
     }
 });
