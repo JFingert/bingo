@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var audio = new Audio();
+	var audioCounter = 0;
 
 	$('body').on('click', '.winner-overlay', function() {
 		$(this).hide();
@@ -48,11 +49,16 @@ $(document).ready(function() {
     }
 
     function chooseAudio() {
-    	var num = Math.floor(Math.random() * (18 - 1 + 1) + 1);
-    	var src = 'audio/' + num + '.mp3';
-
+    	// var num = Math.floor(Math.random() * (18 - 1 + 1) + 1);
+    	console.log(audioCounter);
+    	if(audioCounter >= 17 || audioCounter < 1) {
+    		audioCounter = 1;
+    	} else {
+    		audioCounter++;
+    	}
 		
-    	audio.src = src;
+    	audio.src = 'audio/' + audioCounter + '.mp3';
+    	console.log(audioCounter);
     	// audio.currentTime = 30;
     	audio.play();
     }
@@ -60,7 +66,7 @@ $(document).ready(function() {
     $(document).keypress(function(event){
     	if(String.fromCharCode(event.which) == ' ') {
     		audio.pause();
-			chooseAudio();
+			chooseAudio(audioCounter);
 			assembleBingo();
 			// $('p').css('opacity', 0);
 			$('.title').addClass('flicker');
