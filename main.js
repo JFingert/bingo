@@ -68,11 +68,11 @@ $(document).ready(function() {
     }
 
     function chooseAudio() {
-    	var num = Math.floor(Math.random() * (13 - 1 + 1) + 1);
+    	var num = Math.floor(Math.random() * (8 - 1 + 1) + 1);
     	var src = 'audio/' + num + '.mp3';
 
     	audio.src = src;
-    	audio.currentTime = 30;
+    	// audio.currentTime = 30;
     	audio.play();
     }
 });
