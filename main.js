@@ -1,14 +1,27 @@
 $(document).ready(function() {
+	var audio = new Audio();
+	// window.audio.abort();
+
 	$('body').on('click', '.select', function() {
 		$('.gifContainer').css('margin-top', '500px');
 		assembleBingo();
 
 		$('.spiral').addClass('spin');
 		$('.jaw').addClass('chomp');
+		chooseAudio();
 		setTimeout(function() {
 			$('.spiral').removeClass('spin');
 			$('.jaw').removeClass('chomp');
+			audio.pause();
 		}, 3950);
+	});
+
+	$('body').on('click', '.winner', function() {
+		$('.winner-overlay').show();
+
+		setTimeout(function() {
+			$('.winner-overlay').hide();
+		}, 4000);
 	});
 	
 	function assembleBingo() {
@@ -16,7 +29,6 @@ $(document).ready(function() {
 			chooseNumbers(min, max, function(number) {
 				// console.log(letter + number);
 				startAnimation();
-				// chooseAudio();
 				$('p').html(letter + number);
 			});
 		});
@@ -56,25 +68,10 @@ $(document).ready(function() {
     }
 
     function chooseAudio() {
-    	// var audio = new Audio();
-    	var audio = document.getElementById('audio');
     	var num = Math.floor(Math.random() * (3 - 1 + 1) + 1);
     	var src = 'audio/' + num + '.mp3';
-    	audio.pause();
-    	audio.setAttribute('src', src); //change the source
-		audio.load();
-		audio.addEventListener("load", function() {
-			audio.play();
-		});
-    	// if (audio.paused) {
-    	// 	audio = new Audio('audio/' + num + '.mp3');
-    	// 	audio.play();
-    	// } else {
-    	// 	audio.pause();
-    	// 	audio = new Audio('audio/' + num + '.mp3');
-    	// 	audio.play();
-    	// }
-    	
-		
+
+    	audio.src = src;
+    	audio.play();
     }
 });
