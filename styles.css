@@ -20,6 +20,7 @@ p {
 	color: #FF0000;
 	font-size: 1799px;
     margin: 0;
+    /*opacity: 0;*/
 }
 
 
@@ -122,13 +123,24 @@ p {
 }
 
 .spin {
-	animation:spin 4s infinite;
+	animation:spin 3s linear infinite;
 }
 
 .flicker {
 	animation:flicker 400ms infinite;
 }
+.fade-in {
+	animation:fade-in 10s;
+}
 
+@-webkit-keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 @-webkit-keyframes flicker {
 	0% {
 		color: #fff;

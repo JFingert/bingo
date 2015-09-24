@@ -3,39 +3,53 @@ $(document).ready(function() {
 	// window.audio.abort();
 
 	$('body').on('click', '.select', function() {
-		$('.gifContainer').css('margin-top', '500px');
-		assembleBingo();
 
+		audio.pause();
+		chooseAudio();
+		assembleBingo();
+		// $('p').css('opacity', 0);
 		$('.title').addClass('flicker');
 		$('.spiral').addClass('spin');
 		$('.jaw').addClass('chomp');
-		chooseAudio();
-		setTimeout(function() {
-			$('.title').removeClass('flicker');
-			$('.spiral').removeClass('spin');
-			$('.jaw').removeClass('chomp');
-			audio.pause();
-		}, 3950);
+		// setTimeout(function() {
+		// 	$('.title').removeClass('flicker');
+		// 	$('.spiral').removeClass('spin');
+		// 	$('.jaw').removeClass('chomp');
+		// 	audio.pause();
+		// }, 7900);
 	});
 
 	$('body').on('click', '.winner', function() {
 		$('.winner-overlay').show();
 		audio.src = 'audio/bingo-winner.mp3';
+		$('.title').removeClass('flicker');
+		$('.spiral').removeClass('spin');
+		$('.jaw').removeClass('chomp');
+		audio.pause();
     	audio.play();
     	$('p').html('');
 
-		setTimeout(function() {
-			audio.pause();
-			$('.winner-overlay').hide();
-		}, 7000);
+		// setTimeout(function() {
+		// 	audio.pause();
+		// 	$('.winner-overlay').hide();
+		// }, 7900);
+	});
+
+	$('body').on('click', '.winner-overlay', function() {
+		$(this).hide();
+		audio.pause();
 	});
 	
 	function assembleBingo() {
 		chooseLetter(function(letter, min, max) {
 			chooseNumbers(min, max, function(number) {
-				// console.log(letter + number);
 				startAnimation();
+				$('.numberContainer').html('<p></p>');
+				$('p').addClass('fade-in');
 				$('p').html(letter + number);
+				// setTimeout(function() {
+				// 	$('p').removeClass('fade-in');
+				// }, 10500);
 			});
 		});
 	}
@@ -71,6 +85,7 @@ $(document).ready(function() {
     	var num = Math.floor(Math.random() * (8 - 1 + 1) + 1);
     	var src = 'audio/' + num + '.mp3';
 
+		
     	audio.src = src;
     	// audio.currentTime = 30;
     	audio.play();
