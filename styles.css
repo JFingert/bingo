@@ -29,7 +29,7 @@ p {
 	color: #FFF;
 	font-size: 1099px;
 	position: fixed;
-	top: 0;
+	top: 15%;
 }
 
 .button {
@@ -66,7 +66,7 @@ p {
 	left: 300px;
 }
 .right {
-	right: 300px;
+	right: 600px;
 }
 
 .gifContainer {
