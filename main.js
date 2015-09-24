@@ -82,7 +82,7 @@ $(document).ready(function() {
     }
 
     function chooseAudio() {
-    	var num = Math.floor(Math.random() * (8 - 1 + 1) + 1);
+    	var num = Math.floor(Math.random() * (18 - 1 + 1) + 1);
     	var src = 'audio/' + num + '.mp3';
 
 		

@@ -130,7 +130,7 @@ p {
 	animation:flicker 400ms infinite;
 }
 .fade-in {
-	animation:fade-in 10s;
+	animation:fade-in 20s;
 }
 
 @-webkit-keyframes fade-in {
