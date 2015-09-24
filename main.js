@@ -6,10 +6,12 @@ $(document).ready(function() {
 		$('.gifContainer').css('margin-top', '500px');
 		assembleBingo();
 
+		$('.title').addClass('flicker');
 		$('.spiral').addClass('spin');
 		$('.jaw').addClass('chomp');
 		chooseAudio();
 		setTimeout(function() {
+			$('.title').removeClass('flicker');
 			$('.spiral').removeClass('spin');
 			$('.jaw').removeClass('chomp');
 			audio.pause();
@@ -18,8 +20,12 @@ $(document).ready(function() {
 
 	$('body').on('click', '.winner', function() {
 		$('.winner-overlay').show();
+		audio.src = 'audio/1.mp3';
+    	audio.play();
+    	$('p').html('');
 
 		setTimeout(function() {
+			audio.pause();
 			$('.winner-overlay').hide();
 		}, 4000);
 	});
@@ -61,17 +67,16 @@ $(document).ready(function() {
     	callback(Math.floor(Math.random() * (max - min + 1) + min));
     }
 
-    function startAnimation() {
-    	// $('.gifContainer').html('<img src="./assets/' + Math.floor(Math.random() * (5 - 1 + 1) + 1) + '.gif">')
-    	// $('.gifContainer').animate({'margin-top': '50px'}, 1500);
-
-    }
-
     function chooseAudio() {
-    	var num = Math.floor(Math.random() * (3 - 1 + 1) + 1);
+    	var num = Math.floor(Math.random() * (13 - 1 + 1) + 1);
     	var src = 'audio/' + num + '.mp3';
 
     	audio.src = src;
     	audio.play();
     }
 });
+    function startAnimation() {
+    	// $('.gifContainer').html('<img src="./assets/' + Math.floor(Math.random() * (5 - 1 + 1) + 1) + '.gif">')
+    	// $('.gifContainer').animate({'margin-top': '50px'}, 1500);
+
+    }
